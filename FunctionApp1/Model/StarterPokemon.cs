@@ -15,5 +15,6 @@ public class StarterPokemon
         Item = item;
         Pokemon = pokemon;
         FriendshipLevel = 5;
+        pokemon.Capture();
     }
 }

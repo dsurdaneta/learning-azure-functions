@@ -22,4 +22,10 @@ public class BasicPokemon
     public int Level { get; set; }
     public PokemonType PokemonType { get; set; }
     public int Experience { get; set; }
+    public bool HasBeenCaptured { get; set; }
+
+    public void Capture()
+    {
+        HasBeenCaptured = true;
+    }
 }
