@@ -1,11 +1,5 @@
-using System;
-using FunctionApp1.Model;
-using System.IO;
-using System.Net.Http;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 namespace FunctionApp1;
