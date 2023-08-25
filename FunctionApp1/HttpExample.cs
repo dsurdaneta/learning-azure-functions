@@ -22,10 +22,7 @@ public static class HttpExample
         log.LogInformation("C# HTTP trigger function processed a request.");
 
         string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-        var pokemon = JsonConvert.DeserializeObject<BasicPokemon>(requestBody);
-        var starter = new StarterPokemon(pokemon);
-        var client = new HttpClient();
-        var response = await client.PostAsJsonAsync(new Uri(StarterPokemon.ASSIGNED_STARTER_URL), starter);
+        var response = await Helper.AssignStarter(requestBody);
 
         return new OkObjectResult(response);
     }

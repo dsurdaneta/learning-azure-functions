@@ -23,12 +23,9 @@ public class ServicBusTopicExample
     public async Task RunAsync([ServiceBusTrigger("mytopic", "mysubscription", Connection = "testConnectionString")]string mySbMsg)
     {
         _logger.LogInformation($"C# ServiceBus topic trigger function processed message: {mySbMsg}");
-        
-        var pokemon = JsonConvert.DeserializeObject<BasicPokemon>(mySbMsg);
-        var starter = new StarterPokemon(pokemon);
-        var client = new HttpClient();
-        var response = await client.PostAsJsonAsync(new Uri(StarterPokemon.ASSIGNED_STARTER_URL), starter);
+
+        var response = await Helper.AssignStarter(mySbMsg);
 
         //TODO process response
-    }
+    }    
 }

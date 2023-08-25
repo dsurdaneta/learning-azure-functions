@@ -1,0 +1,18 @@
+﻿using FunctionApp1.Model;
+using Newtonsoft.Json;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+namespace FunctionApp1;
+
+public class Helper
+{
+    internal static async Task<HttpResponseMessage> AssignStarter(string receivedMessage)
+    {
+        var pokemon = JsonConvert.DeserializeObject<BasicPokemon>(receivedMessage);
+        var starter = new StarterPokemon(pokemon);
+        var client = new HttpClient();
+        return await client.PostAsJsonAsync(new Uri(StarterPokemon.ASSIGNED_STARTER_URL), starter);
+    }
+}
